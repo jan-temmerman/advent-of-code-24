@@ -20,7 +20,6 @@ fs.readFile('/Users/jantemmerman/Documents/wotz/advent-of-code-24/inputs/1.txt',
 
     // Calculate the absolute difference between the 2 columns and sum them
     const result = col1.reduce((acc, v1, i) => {
-        console.log(col2[i] - v1)
         acc+= Math.abs(col2[i] - v1);
         return acc;
     }, 0);
