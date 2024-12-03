@@ -1,9 +1,10 @@
-import fs from 'node:fs';
+import fs from "node:fs";
 import _ from "lodash/collection.js";
 
-fs.readFile('/Users/jantemmerman/Documents/wotz/advent-of-code-24/inputs/1.txt', 'utf8', (err, data) => {
-    if (err) {
-        console.error(err);
+export function getSanitizedInput(){
+    const data = fs.readFileSync('/Users/jantemmerman/Documents/wotz/advent-of-code-24/inputs/1.txt', 'utf8')
+    if (!data) {
+        console.error('No data found');
         return;
     }
 
@@ -18,11 +19,5 @@ fs.readFile('/Users/jantemmerman/Documents/wotz/advent-of-code-24/inputs/1.txt',
     col1.sort((a, b) => a - b);
     col2.sort((a, b) => a - b);
 
-    // Calculate the absolute difference between the 2 columns and sum them
-    const result = col1.reduce((acc, v1, i) => {
-        acc+= Math.abs(col2[i] - v1);
-        return acc;
-    }, 0);
-
-    console.log(result);
-});
+    return [col1, col2];
+}
